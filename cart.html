@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bakery Cart</title>
+
+<style>
+:root {
+  --bg-top: #f8e9ff;
+  --bg-bottom: #ffe4d5;
+  --panel: #ffd6c8;
+  --panel-inner: #fff6f2;
+  --accent-soft: #f2bfd8;
+  --button: #fff4b5;
+  --text-main: #463048;
+  --text-soft: #7b5b76;
+  --danger: #ff8f9b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--bg-top), var(--bg-bottom));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-wrapper {
+  width: 90%;
+  max-width: 800px;
+  background: var(--panel);
+  padding: 30px;
+  border-radius: 35px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px dashed #aaa;
+}
+
+button {
+  margin: 2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+  <h1>Your Cart</h1>
+
+  <div id="cart-items"></div>
+
+  <h3>Total Items: <span id="cart-count">0</span></h3>
+  <h3>Total Amount: <span id="cart-total">Rs. 0</span></h3>
+
+<button class="btn-pay" onclick="goToCheckout()">Checkout</button>
+  <button onclick="clearCart()">Clear Cart</button>
+  <br><br>
+  <a href="menu.html">⬅ Back to Menu</a>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("bakeryCart")) || [];
+
+function saveCart() {
+  localStorage.setItem("bakeryCart", JSON.stringify(cart));
+}
+
+function renderCart() {
+  const container = document.getElementById("cart-items");
+  const totalSpan = document.getElementById("cart-total");
+  const countSpan = document.getElementById("cart-count");
+
+  if (cart.length === 0) {
+    container.innerHTML = "Your cart is empty";
+    totalSpan.innerText = "Rs. 0";
+    countSpan.innerText = "0";
+    return;
+  }
+
+  container.innerHTML = "";
+  let total = 0;
+  let count = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price * item.quantity;
+    count += item.quantity;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong><br>
+          Rs. ${item.price} × ${item.quantity}
+        </div>
+        <div>
+          <button onclick="changeQty(RS{index}, -1)">-</button>
+          <button onclick="changeQty(RS{index}, 1)">+</button>
+          <button onclick="removeItem(RS{index})">X</button>
+        </div>
+      </div>
+    `;
+  });
+
+  totalSpan.innerText = "Rs. " + total;
+  countSpan.innerText = count;
+}
+
+function changeQty(index, delta) {
+  cart[index].quantity += delta;
+  if (cart[index].quantity <= 0) cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function clearCart() {
+  cart = [];
+  saveCart();
+  renderCart();
+}
+
+function goToCheckout() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  window.location.href = "checkout.html";
+}
+
+/*function checkout() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  alert("Checkout successful (demo)");
+}*/
+
+renderCart();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Checkout</title>
+
+<style>
+:root {
+  --bg-top: #fde7f3;
+  --bg-bottom: #fff2e6;
+  --card-bg: #ffffff;
+  --accent: #ffb3c6;
+  --text-main: #4b3b4f;
+  --text-soft: #7a5f78;
+  --border: #f1d6e8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--bg-top), var(--bg-bottom));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-main);
+}
+
+.checkout-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+h2 {
+  margin: 20px 0 15px;
+  color: #6b4f74;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  background: #fffafc;
+  outline: none;
+  font-size: 14px;
+  margin-top: 6px;
+  text-align: center;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.row > div {
+  flex: 1;
+}
+
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  border-radius: 22px;
+  border: none;
+  background: linear-gradient(135deg, #ffb3c6, #ffc6a5);
+  color: #4b2c36;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 10px 20px rgba(255, 179, 198, 0.5);
+}
+
+@media (max-width: 480px) {
+  .checkout-card {
+    padding: 22px;
+  }
+}
+</style>
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Checkout</title>
+
+<style>
+:root {
+  --bg-top: #fde7f3;
+  --bg-bottom: #fff2e6;
+  --card-bg: #ffffff;
+  --accent: #ffb3c6;
+  --text-main: #4b3b4f;
+  --text-soft: #7a5f78;
+  --border: #f1d6e8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--bg-top), var(--bg-bottom));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+h2 {
+  margin: 20px 0 15px;
+  color: #6b4f74;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  margin-top: 6px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.row div {
+  flex: 1;
+}
+
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  border-radius: 22px;
+  border: none;
+  background: linear-gradient(135deg, #ffb3c6, #ffc6a5);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<form class="checkout-card">
+
+  <label>Name</label>
+  <input type="text" required placeholder="Your name">
+
+  <label>Address</label>
+  <input type="text" required placeholder="Your address">
+
+  <label>Phone Number</label>
+  <input type="tel"
+         required
+         pattern="03[0-8]{8}"
+         placeholder="03XXXXXXXX">
+
+  <div class="row">
+    <div>
+      <label>City</label>
+      <input type="text" required placeholder="City">
+    </div>
+    <div>
+      <label>Postal Code</label>
+      <input type="text"
+             required
+             pattern="[0-9]{4,6}"
+             placeholder="Postal code">
+    </div>
+  </div>
+
+  <h2>Payment</h2>
+
+  <label>Card Number</label>
+  <input type="text"
+         required
+         pattern="[0-9]{16}"
+         maxlength="16"
+         placeholder="16 digit card number">
+
+  <div class="row">
+    <div>
+      <label>Expiry (MM/YY)</label>
+      <input type="text"
+             required
+             pattern="(0[1-9]|1[0-2])/[0-9]{2}"
+             placeholder="MM/YY">
+    </div>
+    <div>
+      <label>CVV</label>
+      <input type="password"
+             required
+             pattern="[0-9]{3}"
+             maxlength="3"
+             placeholder="CVV">
+    </div>
+  </div>
+
+  <button type="submit">Place Order</button>
+
+</form>
+
+<script>
+function placeOrder() {
+  alert("Order placed successfully!");
+}
+</script>
+
+</body>
+</html>

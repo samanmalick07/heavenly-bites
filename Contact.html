@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heavenly Bites | Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Contact Us</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+       <a href="cart.html">Cart 🛒 <span id="cart-count">0</span></a>
+    </nav>
+</header>
+
+<!-- Contact Form -->
+<form id="contactForm">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>Enter Your Name:</td>
+            <td><input type="text" placeholder="Your Name" size="80"><required></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" placeholder="Email" size="80" required></td>
+        </tr>
+        <tr>
+            <td>Your Comments:</td>
+            <td><textarea rows="5" cols="80" placeholder="Comments" required></textarea></td>
+        </tr>
+    </table>
+    
+    <p>
+        <button type="submit">Send</button>
+    </p>
+</form>
+<footer>
+<div class="footer-container">
+<ul class="footer-list">
+<li><strong>Saman</strong></li>
+<li>Phone: 0300-1234567</li>
+<li>Email: saman@example.pk</li>
+</ul>
+
+<ul class="footer-list">
+<li><strong>Areej</strong></li>
+<li>Phone: 0311-2345678</li>
+<li>Email: areej@example.pk</li>
+</ul>
+
+<ul class="footer-list">
+<li><strong>Tashfeen</strong></li>
+<li>Phone: 0332-2344678</li>
+<li>Email: tashfeen@example.pk</li>
+</ul>
+
+&copy; 2025 Heavenly Bites Bakery</p>
+</footer>
+
+<script>
+// Simple JS alert on submit
+document.getElementById("contactForm").addEventListener("submit", function(event){
+    event.preventDefault(); // prevent page refresh
+    alert("Thank you! Your message has been sent.");
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heavenly Bites | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Heavenly Bites Bakery</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart 🛒 <span id="cart-count">0</span></a>
+    </nav>
+</header>
+
+<div class="slideshow-box">
+    <button id="prevSlide">◀</button>
+    <img id="slide" src="img1.jpg" class="slide-img">
+    <button id="nextSlide">▶</button>
+</div>
+
+<footer>
+<div class="footer-container">
+<ul class="footer-list">
+<li><strong>Saman</strong></li>
+<li>Phone: 0300-1234567</li>
+<li>Email: saman@example.pk</li>
+</ul>
+
+<ul class="footer-list">
+<li><strong>Areej</strong></li>
+<li>Phone: 0311-2345678</li>
+<li>Email: areej@example.pk</li>
+</ul>
+
+<ul class="footer-list">
+<li><strong>Tashfeen</strong></li>
+<li>Phone: 0332-2344678</li>
+<li>Email: tashfeen@example.pk</li>
+</ul>
+
+&copy; 2025 Heavenly Bites Bakery
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("bakeryCart")) || [];
+  let count = 0;
+  cart.forEach(item => count += item.quantity);
+  document.getElementById("cart-count").innerText = count;
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+</body>
+</html>
